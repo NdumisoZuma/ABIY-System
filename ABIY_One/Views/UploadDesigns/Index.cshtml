@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ABIY_One.Models.UploadDesign>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.designArea.AreaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.designSize.SizeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UploadName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrintImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.designArea.AreaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.designSize.SizeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadName)
+        </td>
+        <td>
+            <a><img src="data:image/png;base64,@Convert.ToBase64String(item.PrintImage, 0, item.PrintImage.Length)" style="width: 40px; height: 40px" alt="" /></a>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UploadId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UploadId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UploadId })
+        </td>
+    </tr>
+}
+
+</table>

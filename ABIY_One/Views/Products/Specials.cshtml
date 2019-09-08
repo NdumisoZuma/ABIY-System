@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ABIY_One.Models.Data_Models.Special>
+
+@{
+    ViewBag.Title = "Specials";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <h2 class="title text-center">@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Category
+        </th>
+        <th>
+            Size
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oldPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discountPercent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.newPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.Category_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Size.SizeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QuantityInStock)
+    </td>
+    <td>
+        <a><img src="data:image/png;base64,@Convert.ToBase64String(item.Picture, 0, item.Picture.Length)" style="width: 40px; height: 40px" alt="" /></a>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.oldPrice)
+    </td>
+    <td>
+        @item.discountPercent %
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.discount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.newPrice)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.specialId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.specialId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.specialId })
+    </td>
+</tr>
+}
+
+</table>

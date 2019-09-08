@@ -1,0 +1,81 @@
+﻿@model ABIY_One.Models.UploadDesign
+
+@{
+    ViewBag.Title = "UploadView";
+}
+
+<h2>UploadView</h2>
+<div class="row">
+    <div class="col-md-4">
+        <img src="data:image/png;base64,@Convert.ToBase64String(Model.PrintImage, 0, Model.PrintImage.Length)" style="width: 300px; height: 300px" alt="" />
+    </div>
+    <div class="col-md-6 pull-right">
+        <table class="table">
+            <tr>
+
+                <th>@Html.LabelFor(model => Model.UploadId)</th>
+                <td>
+                    @Html.DisplayFor(model => model.UploadId)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => Model.UploadName)</th>
+                <td>
+                    @Html.DisplayFor(model => model.UploadName)
+                </td>
+            </tr>
+            <tr>
+                <th> Uploader Name </th>
+                <td>
+                    @User.Identity.Name
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => Model.PrintAreaId)</th>
+                <td>
+                    @Html.DisplayFor(model => model.designArea.AreaName)
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => Model.PrintSizeId)</th>
+                <th>
+                    @Html.DisplayFor(model => model.designSize.SizeName)
+                </th>
+            </tr>
+            <tr>
+                <th>>></th>
+                <th>
+                    @*<a>
+                        @Html.ActionLink("Choose T-Shirt", "Index", "Shopping", new { id = Model.UploadId, type = "CustomerUpload" }, new { @class = "btn btn-success" })
+                    </a>*@
+                </th>
+            </tr>
+
+
+
+
+            @*<tr>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-default" href="@Url.Action("Index", "CustomerUploads")">
+                            <i class="fa fa-angle-left"></i>
+                            Back to List
+                        </a>
+                    }
+                </td>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a class="btn btn-default" href="@Url.Action("Edit", "CustomerUploads", new { id = Model.uploadId })">
+                            <i class="fa fa-edit"></i>
+                            Edit
+                        </a>
+                    </td>
+                }
+            </tr>*@
+        </table>
+    </div>
+</div>
+

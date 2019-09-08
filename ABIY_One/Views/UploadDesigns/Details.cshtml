@@ -1,0 +1,54 @@
+﻿@model ABIY_One.Models.UploadDesign
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UploadDesign</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.designArea.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.designArea.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.designSize.SizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.designSize.SizeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrintImage)
+        </dt>
+
+        <dd>
+          
+                <div class="col-md-4">
+                    <img src="data:image/png;base64,@Convert.ToBase64String(Model.PrintImage, 0, Model.PrintImage.Length)" style="width: 300px; height: 300px" alt="" />
+                </div>
+               
+</dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UploadId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

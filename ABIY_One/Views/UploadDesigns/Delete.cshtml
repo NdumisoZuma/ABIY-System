@@ -1,0 +1,58 @@
+﻿@model ABIY_One.Models.UploadDesign
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>UploadDesign</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.designArea.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.designArea.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.designSize.SizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.designSize.SizeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrintImage)
+        </dt>
+
+        <dd>
+            <div class="col-md-4">
+                <img src="data:image/png;base64,@Convert.ToBase64String(Model.PrintImage, 0, Model.PrintImage.Length)" style="width: 300px; height: 300px" alt="" />
+            </div>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
