@@ -1,6 +1,8 @@
 ﻿using ABIY_One;
 using ABIY_One.Models;
 using ABIY_One.Models.Data_Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,8 @@ namespace Feedback.Controllers
          [HttpPost]
         public async Task<ActionResult> Create(FeedbackViewModel model)
         {
+            
+
             Common cm = new Common();
 
             if (ModelState.IsValid)
@@ -44,11 +48,12 @@ namespace Feedback.Controllers
                 {
                     return RedirectToAction("Index");
                 }
-                Customer c = new Customer();
-                Product p = new Product();
+
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                ApplicationUser customer = UserManager.FindById(User.Identity.GetUserId());
 
                 //context.feedbacks.Add(new ABIY_One.Models.Feedback() { Answer = model.Select, Comment=model.Comment, Email=model.Email, FullName=model.FullName});
-                
+
                 //Add Feedback
 
                 context.feedbacks.Add(new ABIY_One.Models.Feedback()
@@ -56,7 +61,7 @@ namespace Feedback.Controllers
                   Comment = model.Comment,
                   date = DateTime.Now,
                   FullName = model.FullName,
-                  Email = c.Email });
+                  Email = customer.Email });
 
                 await context.SaveChangesAsync();
                 return RedirectToAction("Thanks");

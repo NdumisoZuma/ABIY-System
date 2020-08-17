@@ -73,6 +73,48 @@
                         @Html.ValidationMessageFor(model => model.Promotion, "", new { @class = "text-danger" })
                     </td>
                 </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.Male)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.Male, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Male, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.Female)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.Female, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Female, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.boy)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.boy, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.boy, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.girl)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.girl, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.girl, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.Design)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.Design, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Design, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                @*<tr>
+                    <th>@Html.LabelFor(model => model.Promotion)</th>
+                    <td>
+                        @Html.CheckBoxFor(model => model.Promotion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Promotion, "", new { @class = "text-danger" })
+                    </td>
+                </tr>*@
 
                 <tr></tr>
                 <tr>

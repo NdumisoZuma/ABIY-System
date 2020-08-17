@@ -185,10 +185,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DesignAreasController.cs" />
     <Compile Include="Controllers\DesignsController.cs" />
     <Compile Include="Controllers\DesignSizesController.cs" />
     <Compile Include="Controllers\DesignTypesController.cs" />
+    <Compile Include="Controllers\DesignVMsController.cs" />
+    <Compile Include="Controllers\EnquiriesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -212,6 +215,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Charts.cs" />
     <Compile Include="Models\Data_Models\Cart.cs" />
     <Compile Include="Models\Data_Models\Cart_Items.cs" />
     <Compile Include="Models\Data_Models\Category.cs" />
@@ -230,7 +234,9 @@
     <Compile Include="Models\DesignDetail.cs" />
     <Compile Include="Models\DesignSize.cs" />
     <Compile Include="Models\DesignType.cs" />
+    <Compile Include="Models\DesignVM.cs" />
     <Compile Include="Models\EmailFormModel.cs" />
+    <Compile Include="Models\Enquiry.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1933,6 +1939,10 @@
     <Content Include="Images\logo5.jpg" />
     <Content Include="Images\men.jpg" />
     <Content Include="Images\women.jpg" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="AdminStyle\scss\navs\_global.scss" />
@@ -2103,8 +2113,9 @@
     <Content Include="AdminStyle\vendor\jquery\jquery.min.map" />
     <Content Include="AdminStyle\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Feedback\images\Thumbs.db" />
-    <None Include="Properties\PublishProfiles\abiydos - FTP.pubxml" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\abiydos - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\abiytshirts3 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\abiytshirts3 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
@@ -2250,6 +2261,31 @@
     <Content Include="Views\UploadDesigns\UploadView.cshtml" />
     <Content Include="Views\Customers\Welcome.cshtml" />
     <Content Include="Views\Orders\Order_Tracking.cshtml" />
+    <Content Include="Views\Home\Location.cshtml" />
+    <Content Include="Views\Enquiries\Create.cshtml" />
+    <Content Include="Views\Enquiries\Delete.cshtml" />
+    <Content Include="Views\Enquiries\Details.cshtml" />
+    <Content Include="Views\Enquiries\Edit.cshtml" />
+    <Content Include="Views\Enquiries\Index.cshtml" />
+    <Content Include="Views\Enquiries\Complete.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shopping\Male.cshtml" />
+    <Content Include="Views\Shopping\MaleOnPromo.cshtml" />
+    <Content Include="Views\Shopping\Female.cshtml" />
+    <Content Include="Views\Shopping\FemaleOnPromo.cshtml" />
+    <Content Include="Views\Shopping\Boy.cshtml" />
+    <Content Include="Views\Shopping\BoyOnPromo.cshtml" />
+    <Content Include="Views\Shopping\Girl.cshtml" />
+    <Content Include="Views\Shopping\GirlOnPromo.cshtml" />
+    <Content Include="Views\DesignVMs\Create.cshtml" />
+    <Content Include="Views\DesignVMs\Delete.cshtml" />
+    <Content Include="Views\DesignVMs\Details.cshtml" />
+    <Content Include="Views\DesignVMs\Edit.cshtml" />
+    <Content Include="Views\DesignVMs\Index.cshtml" />
+    <Content Include="Views\Shopping\CatIndex.cshtml" />
+    <Content Include="Views\Shopping\CategoryMenu.cshtml" />
+    <Content Include="Views\Shopping\Browse.cshtml" />
+    <Content Include="Views\Shopping\DesignShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

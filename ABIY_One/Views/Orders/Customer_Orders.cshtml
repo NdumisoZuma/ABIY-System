@@ -1,5 +1,6 @@
-﻿@using ABIY_One.Migrations;
+﻿2@using ABIY_One.Migrations;
 @model IEnumerable<ABIY_One.Models.Data_Models.Order>
+
 
 @{
     var order = ViewBag.Status;
@@ -204,9 +205,9 @@
                 <td>
                     @item.date_created.ToLongTimeString()
                 </td>
-                <td>
+                @*<td>
                     @item.Customer.FirstName  @item.Customer.LastName
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.status)
                 </td>

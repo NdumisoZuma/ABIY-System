@@ -1,0 +1,139 @@
+﻿
+@model IEnumerable<ABIY_One.Models.Data_Models.Category>
+
+@{
+    ViewBag.Title = "Store";
+}
+
+<h2>Browse Category</h2>
+<p>
+
+    Select from @Model.Count()
+    categories:
+</p>
+<ul>
+    @foreach (var category in Model)
+    {
+        <li>@Html.ActionLink(category.Category_Name, "Browse", new { category = category.Category_Name })</li>
+    }
+
+</ul>
+
+
+
+
+@*@model IEnumerable<ABIY_One.Models.Data_Models.Category>
+    @{
+        ViewBag.Title = "Browse";
+    }
+    <link href="~/Content/StyleSheets.css" rel="stylesheet" />
+    <style>
+        div.gallery {
+            margin: 1px;
+            border: 2px solid #ccc;
+            float: left;
+            width: 17%;
+        }
+
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery img {
+                width: 100%;
+                height: auto;
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+
+
+    @foreach (var category in Model)
+    {
+        <li>
+                @Html.ActionLink(item.Title, "Details", new { id = item.ItemId })
+            </li>
+
+
+
+
+
+        <div class="gallery">
+            <a target="_blank" href="img_5terre.jpg">
+
+                <h2>@category.Category_Name</h2>
+                @{
+                    var base64 = Convert.ToBase64String(category.Picture);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                }
+                <a href='@Url.Action("Browse", new { id = category.Category_ID })'>
+                    <img src='@imgsrc' />
+                </a>
+
+            </a>
+            <ul>
+                    @foreach (var category in Model)
+                    {
+                        <li>@Html.ActionLink(category.Category_Name, "Browse", new { category = category.Category_Name })</li>
+                    }
+
+                </ul>
+
+            <div class="row">
+                    <p style="text-align: center">
+                        <b> @Html.DisplayFor(expression: modelItem => item.Name)</b>
+                    </p>
+                    <p style="text-align: center">
+                        @Html.DisplayFor(expression: modelItem => item.Description)
+                    </p>
+                    <b>
+                        <p style="text-align: center">
+                            Size:
+                            @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
+                        </p>
+                    </b>
+                    <p style="text-align: center;font-size:large;">
+                        @Html.DisplayFor(expression: modelItem => item.Price)
+                    </p>
+
+                    <p style="text-align: center">
+                        @if (item.QuantityInStock == 0)
+                        {
+                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-shopping-cart disabled"></i> Out of stock</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a><br />
+                            <a href="@Url.Action(actionName: "Details", controllerName: "Products", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> View Details</a>
+
+                        }
+                        @if ()
+                            {
+                                ApplicationDbContext db = new ApplicationDbContext();
+                            }
+                    </p>
+                </div>
+        </div>
+
+
+    }*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<li>@Html.ActionLink(category.Category_Name, "Browse", new { category = category.Category_Name })</li>*@

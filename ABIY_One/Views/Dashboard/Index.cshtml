@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+
+}
+@section scripts{
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/js/jquery.js"></script>
+    @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>*@
+    <script src="~/Content/js/plugins/morris/raphael.min.js"></script>
+    <script src="~/Content/js/plugins/morris/morris.min.js"></script>
+    <script src="~/Content/js/plugins/morris/morris-data.js"></script>
+}
+<div id="dashboard" class="row">
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.NewOrders</div>
+                        <div>Orders</div>
+                    </div>
+                </div>
+            </div>
+            <a href="/Orders/Customer_Orders">
+                <div class="panel-footer">
+                    <span class="pull-left">View Details</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-dropbox fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Packed</div>
+                        <div>Packed Orders</div>
+                    </div>
+                </div>
+            </div>
+            @*<a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>*@
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-truck fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge">@ViewBag.Shipped</div>
+                        <div>Shipped Orders</div>
+                    </div>
+                </div>
+            </div>
+            @*<a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>*@
+        </div>
+    </div>
+    @*<div class="col-lg-3 col-md-6">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-check fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">@ViewBag.DeliveredOrders</div>
+                            <div>Delivered Orders</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <div class="panel-footer">
+                        <span class="pull-left">View Details</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>*@
+
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Top 5 Sold Products</h3>
+        </div>
+        <div class="panel-body">
+            <div id="morris-donut-chart"></div>
+            <div class="text-right">
+                <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-4">
+    <div class="panel panel-green">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Most Orders By Day</h3>
+        </div>
+        <div class="panel-body">
+            <div id="morris-line-chart"></div>
+            <div class="text-right">
+                <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Quantity In Stock</h3>
+        </div>
+        <div class="panel-body">
+            <div id="morris-bar-chart"></div>
+            <div class="text-right">
+                <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

@@ -19,7 +19,7 @@
 </div>
 <br />
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     function fileCheck(obj) {
         var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
         if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
@@ -27,52 +27,110 @@
         } else {
             $("#ImageData").data("");
         }
-    }
+    }*@
 </script>
-
-
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-3 portfolio-item">
-            <div class="pagination">
-                <div class="productinfo text-center jumbotron " style="background-color: #4fbfa280;">
-                    <ul style="list-style-type: none">
-                        <li>
-                            @if (item.DesignImage != null)
-                            {
-                                var base64 = Convert.ToBase64String(item.DesignImage);
-                                var imgScr = string.Format("data:image/gif;base64,{0}", base64);
-                                <a href="@Url.Action("Details", "Designs", new {id = item.DesignId})">
-                                    <img src="@imgScr" width="200" height="200" />
-                                </a>
-                                <br />
-                                <h3><strong>@item.DesignName  </strong></h3>
-                                <hr />
-                                @*@Html.DisplayFor(modelItem => item.ProductName)<br />*@
-                                <h4> <strong> Price</strong></h4>
-                                @*@Html.DisplayFor(modelItem => item.Price)<br />*@
+        <div class="col-md-2 table-condensed" style="height:270px">
+            <div class="row" style="text-align: center;padding-top:5px">
+                @if (item.DesignImage != null)
+                {
+                    var base64 = Convert.ToBase64String(inArray: item.DesignImage);
+                    var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
+                    <img src="@imgSrc" width="90" height="70" />
+                }
+            </div>
+            <div class="row">
+                <p style="text-align: center">
+                    <b> @Html.DisplayFor(expression: modelItem => item.DesignName)</b>
+                </p>
+                <p style="text-align: center">
+                    @Html.DisplayFor(expression: modelItem => item.DesignType.DesignTypeName)
+                </p>
+                @*<p style="text-align: center">
+                        @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
+                    </p>*@
+                <p style="text-align: center;font-size:large;">
+                    @Html.DisplayFor(expression: modelItem => item.DesignPrice)
+                </p>
 
-                                @Html.DisplayFor(modelItem => item.DesignPrice)<br />
-                                <strong>Type</strong><br />
-                                @Html.DisplayFor(modelItem => item.DesignType.DesignTypeName)<br /> <br />
+                @*<p>
+                        @Html.DropDownList("DesignId",null,"**Select Design**")
 
-                            }
+                    </p>*@
 
 
-                        </li>
-                    </ul>
-                </div>
+
+
+
+                <p style="text-align: center">
+                    @*@if (item.QuantityInStock == 0)
+                        {
+                            <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.DesignId})" class="btn disabled btn-default"><i class="fa fa-shopping-cart disabled"></i> Out of stock</a>
+                        }
+                        else
+                        {*@
+                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.DesignId})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a><br />
+                    <a href="@Url.Action(actionName: "Create", controllerName: "DesignVMs", routeValues: new {id = item.DesignId})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Choose Design</a>
+
+                    @*}*@
+                    @*@if ()
+                        {
+                            ApplicationDbContext db = new ApplicationDbContext();
+                        }*@
+                </p>
             </div>
         </div>
     }
 </div>
-<div id="pageNavPosition" style="padding-top: 20px" align="center">
-    <script type="text/javascript">
-        var pager = new Pager('tablepaging', 4);
-        pager.init();
-        pager.showPageNav('pager', 'pageNavPosition');
-        pager.showPage(1);
-    </script>
-</div>
-<br /><br />
+
+
+@*<div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 portfolio-item">
+                <div class="pagination">
+                    <div class="productinfo text-center jumbotron " style="background-color: #4fbfa280;">
+                        <ul style="list-style-type: none">
+                            <li>
+                                @if (item.DesignImage != null)
+                                {
+                                    var base64 = Convert.ToBase64String(item.DesignImage);
+                                    var imgScr = string.Format("data:image/gif;base64,{0}", base64);
+                                    <a href="@Url.Action("Details", "Designs", new {id = item.DesignId})">
+                                        <img src="@imgScr" width="200" height="200" />
+                                    </a>
+                                    <br />
+                                    <h3><strong>@item.DesignName  </strong></h3>
+                                    <hr />
+                                    @Html.DisplayFor(modelItem => item.ProductName)<br />
+                                    <h4> <strong> Price</strong></h4>
+                                    @Html.DisplayFor(modelItem => item.Price)<br />
+
+                                    @Html.DisplayFor(modelItem => item.DesignPrice)<br />
+                                    <strong>Type</strong><br />
+                                    @Html.DisplayFor(modelItem => item.DesignType.DesignTypeName)<br /> <br />
+
+                                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.DesignId})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a><br />
+                                    <a href="@Url.Action(actionName: "Details", controllerName: "Products", routeValues: new {id = item.DesignId})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> View Details</a>
+                                }
+
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>*@
+@*<div id="pageNavPosition" style="padding-top: 20px" align="center">
+        <script type="text/javascript">
+            var pager = new Pager('tablepaging', 4);
+            pager.init();
+            pager.showPageNav('pager', 'pageNavPosition');
+            pager.showPage(1);
+        </script>
+    </div>*@
+<br />
+<br />

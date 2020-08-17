@@ -100,7 +100,12 @@ namespace ABIY_One.Controllers
         //account orders
         public ActionResult Order_History()
         {
-            return View(ob.cust_all().Where(x => x.Customer.Email == User.Identity.Name));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            ApplicationUser customer = UserManager.FindById(User.Identity.GetUserId());
+
+
+
+            return View(ob.cust_all().Where(x => x.Email == User.Identity.Name));
         }
 
 

@@ -51,10 +51,14 @@ namespace ABIY_One.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UploadId,UploadName,PrintImage,PrintSizeId,PrintAreaId")] UploadDesign uploadDesign, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "UploadId,UploadName,PrintImage,PrintSizeId,PrintAreaId,Include")] UploadDesign uploadDesign, HttpPostedFileBase upload, FormCollection frm)
         {
             if (ModelState.IsValid)
             {
+                UploadDesign Ud = new UploadDesign();
+
+                Ud.Include = Ud.CheckRadio(frm);
+
                 if (upload != null && upload.ContentLength > 0)
                 {
                     int fileLength = upload.ContentLength;

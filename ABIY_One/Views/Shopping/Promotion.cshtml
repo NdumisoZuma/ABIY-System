@@ -29,9 +29,12 @@
                 <p style="text-align: center">
                     @Html.DisplayFor(expression: modelItem => item.Description)
                 </p>
-                <p style="text-align: center">
-                    @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
-                </p>
+                <b>
+                    <p style="text-align: center">
+                        Size:
+                        @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
+                    </p>
+                </b>
                 <p style="text-align: center;font-size:large;">
                     @Html.DisplayFor(expression: modelItem => item.Price)
                 </p>

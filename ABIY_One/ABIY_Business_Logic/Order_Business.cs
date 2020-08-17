@@ -10,7 +10,7 @@ namespace ABIY_One.ABIY_Business_Logic
     public class Order_Business
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        /// 
+        /// u
         /// customer orders
         /// 
         public List<Models.Data_Models.Order> cust_all()

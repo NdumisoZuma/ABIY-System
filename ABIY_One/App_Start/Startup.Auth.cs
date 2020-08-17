@@ -60,9 +60,9 @@ namespace ABIY_One
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "494626477768600",
+             appSecret: "d8d8ce076d0560d29743bbc3d67be0ee");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

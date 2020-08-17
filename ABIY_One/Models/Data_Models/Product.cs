@@ -59,6 +59,11 @@ namespace ABIY_One.Models.Data_Models
         public double ExpectedProfit { get; set; }
         [Required]
         public bool Promotion { get; set; }
+        public bool Male { get; set; }
+        public bool Female { get; set; }
+        public bool boy { get; set; }
+        public bool girl { get; set; }
+        public bool Design { get; set; }
 
 
         public double CalcExpctdProft()

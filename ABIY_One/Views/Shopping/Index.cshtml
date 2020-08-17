@@ -9,18 +9,26 @@
 }
 
 <h2 class="title text-center">T-shirts & Logo</h2>
+<center>
+    <b> Search Option: </b> @Html.RadioButton("option", "Name") <text>Name</text >
+ @Html.TextBox("search") 
+<input type="submit" name="submit" value="search">
+    </center>
 
 <div class="row">
     @foreach (var item in Model)
     {
+        //search
         <div class="col-md-2 table-condensed" style="height:270px">
+
             <div class="row" style="text-align: center;padding-top:5px">
                 @if (item.Picture != null)
                 {
                     var base64 = Convert.ToBase64String(inArray: item.Picture);
                     var imgSrc = string.Format(format: "data:image/gif;base64,{0}", arg0: base64);
-                    <img src="@imgSrc" width="90" height="70" />
+                    <img src="@imgSrc" width="90" height="70" />;
                 }
+
             </div>
             <div class="row">
                 <p style="text-align: center">
@@ -29,17 +37,20 @@
                 <p style="text-align: center">
                     @Html.DisplayFor(expression: modelItem => item.Description)
                 </p>
-                <p style="text-align: center">
-                    @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
-                </p>
+                <b>
+                    <p style="text-align: center">
+                        Size:
+                        @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
+                    </p>
+                </b>
                 <p style="text-align: center;font-size:large;">
                     @Html.DisplayFor(expression: modelItem => item.Price)
                 </p>
 
                 @*<p>
-            @Html.DropDownList("DesignId",null,"**Select Design**")
+                        @Html.DropDownList("DesignId",null,"**Select Design**")
 
-        </p>*@
+                    </p>*@
 
 
 
@@ -57,9 +68,9 @@
 
                     }
                     @*@if ()
-            {
-                ApplicationDbContext db = new ApplicationDbContext();
-            }*@
+                        {
+                            ApplicationDbContext db = new ApplicationDbContext();
+                        }*@
                 </p>
             </div>
         </div>

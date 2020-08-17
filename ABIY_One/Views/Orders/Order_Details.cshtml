@@ -135,14 +135,14 @@
                 <th>
                     @Html.DisplayFor(modelItem => item.price)
                 </th>
-                <th>
+                @*<th>
                     @if (Model.status == "Delivered")
                     {
                         <a href="@Url.Action("Log_New","Exchange_n_Returns", new { id= Model.Order_ID,item_ID =item.item_id })" class="btn btn-default">
                             Return Item
                         </a>
                     }
-                </th>
+                </th>*@
             </tr>
         }
         <tr>

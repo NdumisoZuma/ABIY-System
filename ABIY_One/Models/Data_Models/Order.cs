@@ -12,7 +12,7 @@ namespace ABIY_One.Models.Data_Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Order_ID { get; set; }
         public DateTime date_created { get; set; }
-        [ForeignKey("Customer")]
+       
         public string Email { get; set; }
         public bool shipped { get; set; }
         public string status { get; set; }

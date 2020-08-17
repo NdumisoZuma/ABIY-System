@@ -20,19 +20,88 @@ namespace ABIY_One.Controllers
     {
         // GET: Shopping
         private ApplicationDbContext db = new ApplicationDbContext();
+        private Product pd = new Product();
         public string shoppingCartID { get; set; }
         public const string CartSessionKey = "CartId";
 
         private bool Pymnt;
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
 
-            return View(db.Products.Where(x => x.Promotion == false));
+            return View(db.Products.Where(x=>x.Name.StartsWith(search) || search == null).ToList());
+            //return View(db.Products.Where(x => x.Promotion == false));
         }
+
+        public ActionResult CatIndex()
+        {
+            var categories = db.Categories.ToList();
+
+            return View(categories);
+        }
+
+        public ActionResult CategoryMenu()
+        {
+            var categories = db.Categories.ToList();
+            return PartialView(categories);
+
+        }
+
+        public ActionResult Browse(string category)
+        {
+            var categoryModel = db.Categories.Include("Items")
+                .Single(c => c.Category_Name == category);
+            return View(categoryModel);
+        }
+
         public ActionResult Promotion()
         {
             return View(db.Products.Where(x=>x.Promotion==true));
         }
+        public ActionResult Male()
+        {
+            return View(db.Products.Where(x => x.Male == true && x.Promotion == false));
+        }
+        public ActionResult MaleOnPromo()
+        {
+            return View(db.Products.Where(x => x.Male == true && x.Promotion == true));
+        }
+
+        public ActionResult Female()
+        {
+            return View(db.Products.Where(x => x.Female == true && x.Promotion == false));
+        }
+        public ActionResult FemaleOnPromo()
+        {
+            return View(db.Products.Where(x => x.Female == true && x.Promotion == true));
+        }
+        public ActionResult Boy()
+        {
+            return View(db.Products.Where(x => x.boy == true && x.Promotion == false));
+        }
+        public ActionResult DesignShop()
+        {
+            return View(db.Products.Where(x => x.Design == true && x.Promotion == false));
+        }
+        public ActionResult DesignOnPromoShop()
+        {
+            return View(db.Products.Where(x => x.Design == true && x.Promotion == true));
+        }
+
+        public ActionResult BoyOnPromo()
+        {
+            return View(db.Products.Where(x => x.boy == true && x.Promotion == true));
+        }
+        public ActionResult Girl()
+        {
+            return View(db.Products.Where(x => x.girl == true && x.Promotion == false));
+        }
+        public ActionResult GirlOnPromo()
+        {
+            return View(db.Products.Where(x => x.girl == true && x.Promotion == true));
+        }
+
+
+
         public ActionResult add_to_cart(int id)
         {
             var item = db.Products.Find(id);
@@ -46,7 +115,7 @@ namespace ABIY_One.Controllers
         }
         public ActionResult remove_from_cart(string id)
         {
-            var item = db.Cart_Items.Find(id);
+           var item = db.Cart_Items.Find(id);
             if (item != null)
             {
                 remove_item_from_cart(id: id);
@@ -161,7 +230,8 @@ namespace ABIY_One.Controllers
                 Email = customer.Email,
                 date_created = DateTime.Now,
                 shipped = false,
-                status = "Payment Complete"
+                status = "Payment Complete",
+                packed=false
 
 
             });
@@ -172,13 +242,13 @@ namespace ABIY_One.Controllers
             System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(RemoteServerCertificateValidationCallback);
 
             var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
-            string Message = "<p>You have successfuly placed an order</p>,<p>Send us Feedback:</p>,<link>https://abiytshirt3.azurewebsites.net/Feedback/Create</link>";
+            string Message = "<p>You have successfuly placed an order</p>,<p>Send us Feedback:</p>,<link><a href=https://abiytshirt3.azurewebsites.net/Feedback/Create > Click here! </a></link>";
             string FromEmail = "ABIY Ltd";
             string FromName = "Info@abiy.com";
 
             var message = new MailMessage();
             message.To.Add(new MailAddress(customer.Email));
-            message.From = new MailAddress("zakhelekhawula9@gmail.com");
+            message.From = new MailAddress("ndumisozuma99@gmail.com");
             message.Subject = "Order";
             message.Body = string.Format(body, FromName, FromEmail, Message);
             message.IsBodyHtml = true;
@@ -187,14 +257,14 @@ namespace ABIY_One.Controllers
             {
                 var credential = new NetworkCredential
                 {
-                    UserName = "zakhelekhawula9@gmail.com",
-                    Password = "Zakhele2k18"  //valid value
+                    UserName = "ndumisozuma99@gmail.com",
+                    Password = "Sphamandla@12"  //valid value
                 };
                 smtp.Credentials = credential;
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
-                smtp.Send(message);
+                //smtp.Send(message);
 
             }
 
@@ -506,7 +576,7 @@ namespace ABIY_One.Controllers
                 else
                 {
                     cartItem.quantity++;
-                }
+                 }
                 db.SaveChanges();
             }
         }

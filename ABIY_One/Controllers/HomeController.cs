@@ -30,6 +30,11 @@ namespace ABIY_One.Controllers
 
             return View();
         }
+        public ActionResult Location()
+        {
+
+            return View();
+        }
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]

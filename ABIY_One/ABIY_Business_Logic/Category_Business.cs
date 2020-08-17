@@ -24,7 +24,7 @@ namespace ABIY_One.ABIY_Business_Logic
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             { return false; }
         }
         public bool edit(Category model)
@@ -35,7 +35,7 @@ namespace ABIY_One.ABIY_Business_Logic
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             { return false; }
         }
         public bool delete(Category model)
@@ -46,7 +46,7 @@ namespace ABIY_One.ABIY_Business_Logic
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             { return false; }
         }
         public Category find_by_id(int? id)

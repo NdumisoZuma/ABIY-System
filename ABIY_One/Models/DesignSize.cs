@@ -13,5 +13,6 @@ namespace ABIY_One.Models
         [Display(Name = "Print Size")]
         public string SizeName { get; set; }
         public virtual ICollection<UploadDesign> uploads { get; set; }
+        public virtual ICollection<DesignVM> designVm { get; set; }
     }
 }

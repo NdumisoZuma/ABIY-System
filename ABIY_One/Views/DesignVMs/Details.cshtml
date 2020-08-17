@@ -1,0 +1,42 @@
+﻿@model ABIY_One.Models.DesignVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DesignVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.area2.AreaName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.area2.AreaName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.design.DesignName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.design.DesignName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.size.SizeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.size.SizeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DVMid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

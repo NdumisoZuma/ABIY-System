@@ -1,0 +1,16 @@
+﻿
+
+@model IEnumerable<ABIY_One.Models.Data_Models.Category>
+
+
+
+
+@foreach (var category in Model)
+{
+
+    <p class="btn">
+        @Html.ActionLink(category.Category_Name, "Browse", "Store", new { Category = category.Category_Name }, null)
+
+    </p>
+
+}

@@ -1,0 +1,95 @@
+﻿
+@model ABIY_One.Models.Data_Models.Category
+@{
+    ViewBag.Title = "Browse";
+}
+@*<link href="~/Content/StyleSheets.css" rel="stylesheet" />*@
+<style>
+    div.gallery {
+        margin: 1px;
+        border: 2px solid #ccc;
+        float: left;
+        width: 17%;
+    }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+</style>
+<h2>@Model.Category_Name</h2>
+
+@foreach (var item in Model.Items)
+{
+    @*<li>
+            @Html.ActionLink(item.Title, "Details", new { id = item.ItemId })
+        </li>*@
+
+
+
+
+
+    <div class="gallery">
+        <a target="_blank" href="img_5terre.jpg">
+
+
+            @{
+                var base64 = Convert.ToBase64String(item.Picture);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <a href='@Url.Action("Details", new { id = item.ItemCode })'>
+                <img src='@imgsrc' />
+            </a>
+
+        </a>
+        <div class="row">
+            <p style="text-align: center">
+                <b> @Html.DisplayFor(expression: modelItem => item.Name)</b>
+            </p>
+            <p style="text-align: center">
+                @Html.DisplayFor(expression: modelItem => item.Description)
+            </p>
+            <b>
+                <p style="text-align: center">
+                    Size:
+                    @Html.DisplayFor(expression: modelItem => item.Size.SizeName)
+                </p>
+            </b>
+            <p style="text-align: center;font-size:large;">
+                @Html.DisplayFor(expression: modelItem => item.Price)
+            </p>
+
+            <p style="text-align: center">
+                @if (item.QuantityInStock == 0)
+                {
+                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn disabled btn-default"><i class="fa fa-shopping-cart disabled"></i> Out of stock</a>
+                }
+                else
+                {
+                    <a href="@Url.Action(actionName: "add_to_cart", controllerName: "Shopping", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> Add to cart</a><br />
+                    <a href="@Url.Action(actionName: "Details", controllerName: "Products", routeValues: new {id = item.ItemCode})" class="btn btn-default"><i class="fa fa-shopping-cart"></i> View Details</a>
+
+                }
+                @*@if ()
+                    {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                    }*@
+            </p>
+        </div>
+    </div>
+
+
+}
+
+
+
+

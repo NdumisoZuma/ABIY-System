@@ -13,6 +13,7 @@ namespace ABIY_One.Models
         [Display(Name ="Print Position")]
         public string AreaName { get; set; }
         public virtual ICollection<UploadDesign> uploads { get; set; }
+        public virtual ICollection<DesignVM> designVm { get; set; }
 
     }
 }

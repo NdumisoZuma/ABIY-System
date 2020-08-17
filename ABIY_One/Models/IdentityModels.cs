@@ -100,5 +100,9 @@ namespace ABIY_One.Models
         public DbSet<Special> Specials { get; set; }
 
         public System.Data.Entity.DbSet<ABIY_One.Models.Size> Sizes { get; set; }
+
+        public System.Data.Entity.DbSet<ABIY_One.Models.Enquiry> Enquiries { get; set; }
+
+        public System.Data.Entity.DbSet<ABIY_One.Models.DesignVM> DesignVMs { get; set; }
     }
 }

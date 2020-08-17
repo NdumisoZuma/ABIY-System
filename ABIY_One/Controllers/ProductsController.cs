@@ -21,10 +21,12 @@ namespace ABIY_One.Controllers
         public const string CartSessionKey = "CartId";
 
         public ProductsController() { }
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
+
             //var products = db.Categories();
-            return View(pb.all());
+            return View(db.Products.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+            // return View(pb.all());
         }
         public ActionResult Details(int? id)
         {
